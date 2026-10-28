@@ -90,16 +90,16 @@ public class Exercises {
         }
 
         ListNode current = head;
-        int num = current.data;
+        int min = current.data;
         
         while (current != null) {
-            if (num > current.data) {
-                num = current.data;
+            if (min > current.data) {
+                min = current.data;
             }
             current = current.next;
         }
 
-        return num;
+        return min;
     }
 
     /**
@@ -120,7 +120,26 @@ public class Exercises {
      * @return the head of the list with the first instance of the minimum value removed
      */
     public static ListNode removeMin(ListNode head) {
-        return null;
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        ListNode current = head;
+        
+        if (min(head) == head.data) {
+            head = head.next;
+            return head;
+        }
+
+        while (current != null) {
+            if (min(head) == current.next.data) {
+                current.next = current.next.next;
+                return head;
+            }
+            current = current.next;
+        }
+        
+        return head;
     }
 
     /* ------ OPTIONAL CHALLENGE PROBLEMS ------ */
