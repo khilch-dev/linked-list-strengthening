@@ -125,14 +125,15 @@ public class Exercises {
         }
 
         ListNode current = head;
+        int minNum = min(head);
         
-        if (min(head) == head.data) {
+        if (minNum == head.data) {
             head = head.next;
             return head;
         }
 
-        while (current != null) {
-            if (min(head) == current.next.data) {
+        while (current.next != null) {
+            if (minNum == current.next.data) {
                 current.next = current.next.next;
                 return head;
             }
